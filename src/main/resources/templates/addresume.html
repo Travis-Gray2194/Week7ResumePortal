@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html  lang="en" xmlns:th="www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <!-- Bootstrap core CSS -->
+    <link th:href="@{css/bootstrap.min.css}" rel="stylesheet"/>
+
+    <!-- Custom styles for this template -->
+    <link th:href="@{css/custom.css}" rel="stylesheet"/>
+</head>
+<body>
+<div class="container">
+    <h4>New Resume</h4>
+    <form autocomplete="off" action="#" th:action="@{/addResume}"
+          th:object="${resume}" method="post">
+                        <span th:if="${#fields.hasErrors('first')}"
+                              th:errors="*{first}">First Name:</span>
+        <input type="text" id="first" placeholder="First Name"
+               th:field="*{first}" /><br />
+
+
+        <span th:if="${#fields.hasErrors('last')}"
+                              th:errors="*{last}">Last Name:</span>
+        <input type="text" id="last" placeholder="Last Name"
+               th:field="*{last}" /><br />
+
+                        <span th:if="${#fields.hasErrors('school')}"
+                              th:errors="*{school}">School:</span>
+        <input type="text" id="school" placeholder="school"
+               th:field="*{school}" /><br />
+
+          <span th:if="${#fields.hasErrors('skill')}"
+                th:errors="*{skill}">Skill:</span>
+        <input type="text" id="skill" placeholder="skill"
+               th:field="*{skill}" /><br />
+
+
+        <span th:if="${#fields.hasErrors('company')}"
+              th:errors="*{company}">Company:</span>
+        <input type="text" id="company" placeholder="company"
+               th:field="*{company}" /><br />
+
+
+
+        <span th:if="${#fields.hasErrors('email')}"
+               th:errors="*{email}">Email:</span>
+        <input type="text" id="email" placeholder="email"
+               th:field="*{email}" /><br />
+
+         <span th:if="${#fields.hasErrors('degree')}"
+               th:errors="*{degree}">Degree:</span>
+        <input type="text" id="degree" placeholder="degree"
+               th:field="*{degree}" /><br />
+
+
+        <span th:if="${#fields.hasErrors('field')}"
+              th:errors="*{field}">Field:</span>
+        <input type="text" id="field" placeholder="field"
+               th:field="*{field}" /><br />
+
+
+        <span th:if="${#fields.hasErrors('yearGrad')}"
+              th:errors="*{yearGrad}">yearGrad:</span>
+        <input type="text" id="yearGrad" placeholder="yearGrad"
+               th:field="*{yearGrad}" /><br />
+
+
+
+        <span th:if="${#fields.hasErrors('workTitle')}"
+              th:errors="*{workTitle}">workTitle:</span>
+        <input type="text" id="workTitle" placeholder="workTitle"
+               th:field="*{workTitle}" /><br />
+
+
+        <span th:if="${#fields.hasErrors('workDur')}"
+               th:errors="*{workDur}">workDur:</span>
+        <input type="text" id="workDur" placeholder="workDur"
+               th:field="*{workDur}" /><br />
+
+
+
+        <span th:if="${#fields.hasErrors('duty')}"
+               th:errors="*{duty}">Duty:</span>
+        <input type="text" id="duty" placeholder="duty"
+               th:field="*{duty}" /><br />
+       Duty Error
+
+
+
+        <span th:if="${#fields.hasErrors('proficiency')}"
+               th:errors="*{proficiency}">proficiency:</span>
+        <input type="text" id="proficiency" placeholder="proficiency"
+               th:field="*{proficiency}" /><br />
+
+
+
+        <button type="submit" class="btn btn-default">Submit</button>
+    </form>
+</div>
+
+<div class="container">
+    <br/><br/>
+    <div class="row">
+        <div class="col-md-12 text-center">
+            <span class="copyright">Created by Travis Gray 2017</span>
+        </div>
+    </div>
+</div>
+</body>
+</html>

@@ -4,7 +4,7 @@
 
 <body>
 
-<nav th:replace="fragments :: recruiterNavbar(${highLightPostJob}, ${highLightPostList}, ${highLightSearch})"></nav>
+<nav th:replace="fragments :: recruiterNavbar"></nav>
 
 <div class = "container">0
     <div class = "table-responsive">
@@ -13,7 +13,6 @@
                 <table class="table table-striped">
                     <tr>
                         <th class="text-center" height="80">First</th>
-                        <th class="text-center" height="80">Middle</th>
                         <th class="text-center" height="80">Last</th>
                         <th class="text-center" height="80">Degree</th>
                         <th class="text-center" height="80">Field</th>
@@ -35,9 +34,6 @@
                         <tr>
                             <td class="text-center">  <p th:utext = "${candidateresume.first} " height="80">First Name </p>
 
-                            </td>
-                            <td class="text-center"><p th:utext = "${candidateresume.middle } " height="80">Middle Name </p>
-                            </td>
 
                             <td  class="text-center"><p th:utext = "${candidateresume.last} " height="80">Last Name  </p>
                             </td>

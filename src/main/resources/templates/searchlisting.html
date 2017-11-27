@@ -1,42 +1,65 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="www.thymeleaf.org" >
-<head th:replace="main::headstuff">
+<html lang="en" xmlns:th="www.thymeleaf.org" xmlns:sec="www.thymeleaf.org/extras/spring-security">
+<head>
+    <!-- Bootstrap core CSS -->
+    <link th:href="@{css/bootstrap.min.css}" rel="stylesheet">
 
+    <!-- Custom styles for this template -->
+    <link th:href="@{css/custom.css}" rel="stylesheet">
 </head>
 <body>
 
 
-<div th:replace="main::navbar">
-
-</div>
 
 
+<div sec:authorize="isAuthenticated()">
+    This content is only shown to authenticated users.<br />
 
+    <div sec:authorize="hasAuthority('RECRUITER')" >
+        This content is only shown to administrators.
+        <nav th:fragment="recruiterNavbar" class="navbar navbar-inverse navbar-fixed-top card-3">
+        </nav>
 
-<div class = "container">
+        <div class = "container">
 
-        <div th:each = "candidateresume: ${resumeList}">
-             <p th:utext = "${candidateresume.first} +' ' +${candidateresume.middle}+' '+ ${candidateresume.last}">Record </p>
-            <p th:utext = "${candidateresume.email}"></p>
+            <div th:each = "candidateresume: ${resumeList}">
+                <p th:text = "${candidateresume.first} + ', ' + ${candidateresume.last}">Record </p>
+                <p th:text = "${candidateresume.email}"></p>
                 <h5>Education</h5>
-              <p th:utext = "${candidateresume.degree}+' in '+${candidateresume.field}+' &lt;br/&gt;'+${candidateresume.school}+', '+${candidateresume.yearGrad}">Record</p>
-            <h5>Experience</h5>
-           <p th:utext=" ${candidateresume.jobTitle} +' &lt;br/&gt; ' +${candidateresume.company}+', '+${candidateresume.workDur}+'&lt;br/&gt; '+ ${candidateresume.duty}">Record</p>
-            <h5>Skills</h5>
-            <p th:utext="${candidateresume.skill}+ ', '+ ${candidateresume.proficiency}">Record</p>
+                <p th:text = "${candidateresume.degree}+' in '+${candidateresume.field}+' &lt;br/&gt;'+${candidateresume.school}+', '+${candidateresume.yearGrad}">Record</p>
+                <h5>Experience</h5>
+                <p th:text=" ${candidateresume.jobTitle} +' &lt;br/&gt; ' +${candidateresume.company}+', '+${candidateresume.workDur}+'&lt;br/&gt; '+ ${candidateresume.duty}">Record</p>
+                <h5>Skills</h5>
+                <p th:text="${candidateresume.skill}+ ', '+ ${candidateresume.proficiency}">Record</p>
+            </div>
+
         </div>
-
-
-
-
-
-
+    </div>
+    <div sec:authorize="hasAuthority('USER')" >
+        This content is only shown to users.
+    </div>
+    Logged user: <span sec:authentication="username">The value of the "name" property of the authentication object should appear here.</span><br />
+    Roles: <span sec:authentication="principal.authorities">[ROLE_USER, ROLE_ADMIN]</span><br /><br />
+</div>
+<div sec:authorize="isAnonymous()">
+    This content is only shown to anonymous users.
 </div>
 
-<!-- th:block goes away after processing, but what's inside stays, so it won't affect the page layout -->
-<th:block th:replace="fragments :: javaScriptTemplate"></th:block>
 
-<th:block th:replace="fragments :: modals"></th:block>
+
+
+
+
+<div class="container">
+    <br/><br/>
+    <div class="row">
+        <div class="col-md-12 text-center">
+            <span class="copyright">Created by Travis Gray 2017</span>
+        </div>
+    </div>
+</div>
+
+
 </body>
 
 </html>

@@ -14,6 +14,8 @@ import java.security.Principal;
 import java.util.LinkedHashSet;
 import java.util.Set;
 
+import static org.springframework.data.jpa.domain.AbstractPersistable_.id;
+
 /**
  * Created by ${TravisGray} on 11/24/2017.
  */
@@ -36,20 +38,53 @@ public class HomeController {
     @Autowired
     UserService userService;
 
+    @RequestMapping("/")
+    public String Main() {
+        return "searchlisting";
+    }
+
 
     @RequestMapping("/login")
     public String login() {
+
         return "login";
+    }
+
+
+
+    @GetMapping("/addResume")
+    public String addResume(Model model){
+        CandidateResume candidateResume = new CandidateResume();
+        model.addAttribute("resume", candidateResume);
+        return "addresume";
+    }
+
+    @PostMapping("/addResume")
+    public String addResume(@ModelAttribute("resume") CandidateResume candidateResume){
+        candidateResumeRepository.save(candidateResume);
+        return "redirect:/";
+    }
+
+
+
+    @PostMapping("/showresume")
+    public String showResume(@ModelAttribute("resume") Model model,CandidateResume candidateResume){
+        model.addAttribute("resume",candidateResume);
+        return "showresume";
     }
 
     @GetMapping("/register")
     public String registerGet(Model model) {
         Candidate candidate = new Candidate();
         Employer employer = new Employer();
+        UserData userData = new UserData();
         model.addAttribute("employer", employer);
         model.addAttribute("candidate", candidate);
+        model.addAttribute("user",userData);
         return "register";
     }
+
+
 
 
     @PostMapping("/register")
@@ -62,8 +97,7 @@ public class HomeController {
 
         if (bindingResult.hasErrors()) {
             if (userRepository.countByUsername(user.getUsername()) > 0) {
-                // in addition to other validation errors, the selected username already exists, so display
-                // a custom error message
+
                 model.addAttribute("usernameAlreadyExists", true);
             }
             return "register";
@@ -72,11 +106,12 @@ public class HomeController {
         return "login";
     }
 
+
     @GetMapping("/addcandidate")
     public String addCandidate(Model model){
         Candidate candidate = new Candidate();
         model.addAttribute("candidate",candidate);
-        return "candidate_profile.html";
+        return "candidate_profile";
     }
 
     @PostMapping("/addcandidate")
@@ -90,7 +125,7 @@ public class HomeController {
     public String addEmployer(Model model){
         Employer employer = new Employer();
         model.addAttribute("employer", employer);
-        return "employer_signup.html";
+        return "employer_signup";
     }
 
     @PostMapping("/addemployer")
@@ -99,18 +134,6 @@ public class HomeController {
         return "redirect:/";
     }
 
-    @GetMapping("/addResume")
-    public String addResume(Model model){
-        CandidateResume candidateResume = new CandidateResume();
-        model.addAttribute("resume", candidateResume);
-        return "candidate_add_resume.html";
-    }
-
-    @PostMapping("/addResume")
-    public String addResume(@ModelAttribute("resume") CandidateResume candidateResume){
-        candidateResumeRepository.save(candidateResume);
-        return "redirect:/";
-    }
 
     @RequestMapping ("/searchfirstname")
     public String doSearchByFirst(@RequestParam("first") String first, Model model) {
@@ -144,59 +167,6 @@ public class HomeController {
         model.addAttribute(candidateResumeRepository.findAllBySkill(skill));
         return "searchlisting";
     }
-
-//    @RequestMapping(value = "/signup", method = RequestMethod.GET)
-//    public String signup(Model model){
-//
-//        //Adding both Candidates and Employers to Model binding to new Variable within Model
-//        Candidate candidate = new Candidate();
-//        Employer employer = new Employer();
-//        Job job = new Job();
-//        CandidateResume candidateResume = new CandidateResume();
-//
-//        model.addAttribute("employer", employer);
-//        model.addAttribute("job",job);
-//        model.addAttribute("candidateresmue",candidateResume);
-//        model.addAttribute("candidate",candidate);
-//
-////        When we return to signup page we will have a new canidate object defined
-//        return "signup";
-//
-//    }
-//
-//    @RequestMapping(value = "/signup", method = RequestMethod.POST)
-//    public void signupPost(@ModelAttribute("candidate") Candidate candidate, @ModelAttribute("employer") Employer employer, Model model){
-//
-//    }
-//
-//
-
-//
-//    @GetMapping("/addjob")
-//    public String addJob(Model model){
-//        Job job = new Job();
-//        model.addAttribute("job", job);
-//        return "employer_post_job.html";
-//    }
-//
-//    @PostMapping("/addjob")
-//    public String addjob(@ModelAttribute("job") Job job){
-//        jobRepository.save(job);
-//        return "redirect:/";
-//    }
-//
-//    @GetMapping("/addResume")
-//    public String addResume(Model model){
-//        CandidateResume candidateResume = new CandidateResume();
-//        model.addAttribute("resume", candidateResume);
-//        return "candidate_add_resume.html";
-//    }
-//
-//    @PostMapping("/addResume")
-//    public String addResume(@ModelAttribute("resume") CandidateResume candidateResume){
-//        candidateResumeRepository.save(candidateResume);
-//        return "redirect:/";
-//    }
 
 
 }

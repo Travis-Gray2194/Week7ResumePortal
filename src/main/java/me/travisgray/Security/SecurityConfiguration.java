@@ -38,7 +38,8 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter{
 
         http
                 .authorizeRequests().antMatchers( "/css/**").permitAll()
-                .antMatchers("/dosearchbyschool, /dosearchbycompany, /dosearchbyskill").hasRole("RECRUITER")
+                .antMatchers("/register,/login,/addResume,/dosearchbyschool, /dosearchbycompany, /dosearchbyskill").hasAuthority("RECRUITER")
+                .antMatchers("/register,/login,/addResume,/dosearchbyschool, /dosearchbycompany, /dosearchbyskill").hasAuthority("USER")
                 .anyRequest().authenticated()
                 .and()
                 .formLogin()
@@ -63,9 +64,9 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter{
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
 
         auth.userDetailsService(userDetailsServiceBean());
-    auth.inMemoryAuthentication().withUser("user").password("password").roles("USER").and().
-                withUser("root").password("password2").roles("RECRUITER").and().
-                withUser("Dave").password("begreat").roles("RECRUITER").and().
-        withUser("Fi").password("becold").roles("RECRUITER");
+    auth.inMemoryAuthentication().withUser("user").password("password").authorities("USER").and().
+                withUser("root").password("password2").authorities("RECRUITER").and().
+                withUser("Dave").password("begreat").authorities("RECRUITER").and().
+        withUser("Fi").password("becold").authorities("RECRUITER");
     }
 }

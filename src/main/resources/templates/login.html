@@ -8,27 +8,25 @@
 </head>
 <body>
     <div class="container">
-        <form class="form-signin" th:action="@{/login}" method="post">
         <div class="left-side">
 
         <h1 class="title">Project <span class=titleBold>Jobs</span></h1>
         <div class="intro">
             <h2 class="intro-heading">Find Jobs you will Prosper in...</h2>
             <p class="intro-p">The Beta will go live in November, so sign up<br> to enjoy Project Jobs before anyone else.</p>
-            <a class="btn register-btn" th:href="@{/register}">Register Now</a></div>
-    </div>
+            <button class="register-btn"><a href="@{/register}">Register Now</a></button></div>    </div>
     <div class="right-side">
         <h2>Sign in to the site</h2>
         <div class="login-form">
-            <input type="text" id="uname" placeholder="Username" name="username" required>
+            <form class="form-signin" th:action="@{/login}" method="post">
+            <input type="text" id="name" placeholder="Username" name="username" required>
             <br>
             <input type="password" id="pword" placeholder="Password" name="password" required>
             <br>
             <button type="submit" class="login-btn"><a href="#">Login</a></button>
+            </form>
         </div>
-    </form>
     </div>
 </div>
-
 </body>
 </html>

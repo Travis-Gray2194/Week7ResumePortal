@@ -11,7 +11,7 @@ import java.util.Collection;
 public class CandidateResume {
     @Id
     @GeneratedValue(strategy= GenerationType.AUTO)
-    private int id;
+    private long id;
     private String first;
     private String last;
     private String school;
@@ -50,7 +50,7 @@ public class CandidateResume {
     @JoinTable(joinColumns = @JoinColumn(name = "candidate_id"), inverseJoinColumns = @JoinColumn(name = "resume_id"))
     private Collection<Candidate>candidates;
 
-    public int getId() {
+    public long getId() {
         return id;
     }
 
