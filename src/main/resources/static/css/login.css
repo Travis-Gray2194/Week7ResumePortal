@@ -1,0 +1,179 @@
+* {
+    margin: 0 auto;
+
+}
+
+body {
+    font-family: 'Oswald', sans-serif;
+    font-size: 18px;
+    background-image: url(https://unsplash.com/photos/E7RLgUjjazc);
+    background-size:cover;
+    background-position: 66.47%;
+    height: 100vh;
+
+}
+
+
+
+.left-side {
+    float: left;
+    width: 50%;
+    background-size: cover;
+    height: 100vh;
+    background: #314755;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #26a0da, rgba(49, 71, 85, 0.21));  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, rgba(38, 160, 218, 0.2), rgba(23, 31, 36, 0.63)); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+
+}
+
+.right-side {
+    float: right;
+    width: 50%;
+    height: 100vh;
+    background: #314755;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #26a0da, rgba(49, 71, 85, 0.21));  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, rgba(48, 124, 160, 0.92), rgba(70, 49, 85, 0.75)); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+
+
+
+
+}
+
+.button a {
+    text-decoration: none;
+}
+
+/* ------- left side ------- */
+
+.title, .titleBold, .intro, intro-heading, .register-btn, .register-btn a {
+    opacity: 1;
+}
+
+.title {
+    font-size: 50px;
+    font-weight: 200;
+    color: #f8f8f8;
+    margin-top: 4%;
+    text-transform: uppercase;
+    text-align: center;
+    letter-spacing: 2px;
+    word-spacing: -8.5px;
+}
+
+.titleBold {
+    font-weight: 500;
+    color: #ffffff;
+}
+
+
+.intro {
+
+    text-align: center;
+}
+
+.intro-heading {
+    margin-top: 25%;
+    font-size: 35px;
+    font-weight: 200;
+    letter-spacing: 2px;
+    word-spacing: 4px;
+    text-transform: uppercase;
+    color: #fff;
+}
+
+.intro-p {
+    text-align: center;
+    color: #fff;
+    margin-top: 1.5%;
+    font-weight: 100;
+    font-size: 1.1em;
+    letter-spacing: 0.9px;
+    word-spacing: 2px
+}
+
+.register-btn {
+    margin-top: 8%;
+    font-size: 18px;
+    padding: 12px;
+    background-color: #0d80c7;
+    border-radius: 100PX;
+    width: 230px;
+    overflow: hidden;
+    outline: none;
+    border: 1px solid #0d80c7;
+}
+
+.register-btn:hover {
+    background-color: #0570b2;
+    border: 1px solid #0570b2;
+}
+
+.register-btn a {
+    text-decoration: none;
+    text-transform: uppercase;
+    color: #fff;
+}
+
+/* ------- right side ------- */
+
+.right-side h2 {
+    text-align: center;
+    font-size: 1.5em;
+    font-weight: 200;
+    word-spacing: 5px;
+    letter-spacing: 4px;
+    margin-top: 28%;
+    margin-bottom: 5%;
+    color: #fff;
+    text-transform: uppercase;
+
+}
+
+.login-form{
+    text-align: center;
+
+
+}
+
+.login-form input {
+    font-size: 20px;
+    padding: 12px;
+    padding-left: 17px;
+    background-color: transparent;
+    border: 1px solid #fff;
+    border-radius: 100px;
+    width: 230px;
+    color: #fff;
+}
+
+#uname{
+    color: #fff;
+}
+
+#pword {
+    margin-top: 3%
+}
+.login-btn {
+    margin-top: 8%;
+    font-size: 20px;
+    padding: 12px;
+    background-color: #fff;
+    border-radius: 100px;
+    width: 260px;
+    border: 1px solid white;
+}
+
+::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+    color: #fff;
+    padding-right: 20px;
+}
+
+.login-btn a {
+    text-decoration: none;
+    text-transform: uppercase;
+    color: #0d80c7;
+    letter-spacing: 1px;
+    font-weight: 200;
+}

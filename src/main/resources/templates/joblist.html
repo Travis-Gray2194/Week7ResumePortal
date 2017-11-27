@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html  lang="en" xmlns:th="www.thymeleaf.org">
+<head th:replace="fragments :: headerFragment"></head>
+
+<body>
+
+<nav th:replace="fragments :: recruiterNavbar(${highLightPostJob}, ${highLightPostList}, ${highLightSearch})"></nav>
+
+<div class = "container">0
+    <div class = "table-responsive">
+        <div class="table">
+            <div>
+                <table class="table table-striped">
+                    <tr>
+                        <th class="text-center" height="80">First</th>
+                        <th class="text-center" height="80">Middle</th>
+                        <th class="text-center" height="80">Last</th>
+                        <th class="text-center" height="80">Degree</th>
+                        <th class="text-center" height="80">Field</th>
+                        <th class="text-center" height="80">School</th>
+                        <th class="text-center" height="80">Year</th>
+                        <th class="text-center" height="80">Skill</th>
+                        <th class="text-center" height="80">Company</th>
+                        <th class="text-center" height="80">Email</th>
+                        <th class="text-center" height="80">Title</th>
+                        <th class="text-center" height="80">Duration</th>
+                        <th class="text-center" height="80">Duty</th>
+                        <th class="text-center" height="80">Proficiency</th>
+                    </tr>
+
+
+
+
+                    <th:block th:each = "CandidateResume: ${resumeList}">
+                        <tr>
+                            <td class="text-center">  <p th:utext = "${candidateresume.first} " height="80">First Name </p>
+
+                            </td>
+                            <td class="text-center"><p th:utext = "${candidateresume.middle } " height="80">Middle Name </p>
+                            </td>
+
+                            <td  class="text-center"><p th:utext = "${candidateresume.last} " height="80">Last Name  </p>
+                            </td>
+                            <td class="text-center"><p th:utext = "${candidateresume.degree } " height="80">Degree  </p>
+                            </td>
+                            <td class="text-center"><p th:utext = "${candidateresume.field } " height="80">Job Field  </p>
+                            </td>
+                            <td class="text-center"><p th:utext = "${candidateresume.school} " height="80">School </p>
+                            </td>
+                            <td class="text-center"><p th:utext = "${candidateresume.yearGrad } " height="80">Graduation Year  </p>
+                            </td>
+                            <td class="text-center"><p th:utext = "${candidateresume.skill } " height="80">Skill Level  </p>
+                            </td>
+                            <td class="text-center"><p th:utext = "${candidateresume.company } " height="80">Company  </p>
+                            </td>
+                            <td class="text-center"><p th:utext = "${candidateresume.email } " height="80">Email </p>
+                            </td>
+                            <td class="text-center"><p th:utext = "${candidateresume.workTitle } " height="80">Job Title </p>
+                            </td>
+                            <td class="text-center"><p th:utext = "${candidateresume.workDur } " height="80">Work Duration </p>
+                            </td>
+                            <td class="text-center"><p th:utext = "${candidateresume.duty} " height="80">Work Duties  </p>
+                            </td>
+                            <td class="text-center"><p th:utext = "${candidateresume.proficiency} " height="80">Proficiency Level  </p>
+                            </td>
+
+                        </tr>
+                    </th:block>
+                    </table>
+                </table
+            </div>
+        </div>
+    </div>
+<!-- javascript -->
+<!-- th:block goes away after processing, but what's inside stays, so it won't affect the page layout -->
+<th:block th:replace="fragments :: javaScriptTemplate"></th:block>
+    <th:block th:replace="fragments :: modals"></th:block>
+
+</body>
+
+</html>

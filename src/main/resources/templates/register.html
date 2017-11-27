@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html  lang="en" xmlns:th="www.thymeleaf.org">
+<link>
+    <meta charset="ISO-8859-1"/>
+    <title>Register User Form</title>
+    <link rel="stylesheet" type="text/css"
+          href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"/>
+    <link rel="stylesheet" type="text/javascript"
+          href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"/>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
+    <script type="text/javascript">
+        $("document").ready(function() {   /// JavaScript to Determine Roles based on Selection by Registered user
+            $(".candidate").hide();
+
+            $("select").change(function(){
+
+                var thisValue = $(this).val();
+                if (thisValue == "candidate")
+                    $(".candidate").show();
+                if (thisValue == "employer")
+                    $(".candidate").hide();
+            });
+        });
+    </script>
+</head>
+<body>
+<nav th:replace="fragments :: navbar(${pageState})"></nav>
+
+<div class="container">
+    <nav class="navbar navbar-default">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed"
+                        data-toggle="collapse" data-target="#navbar" aria-expanded="false"
+                        aria-controls="navbar">
+                    <span class="sr-only">Toggle navigation</span> <span
+                        class="icon-bar"></span> <span class="icon-bar"></span> <span
+                        class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="login.html">ProjectJobs</a>
+            </div>
+            <div id="navbar" class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li class="active"><a href="login.html">Register User</a></li>
+
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    <li class="active"><a href="../templates">Questions? Call us at
+                        1-866-204-6764 <span class="sr-only">(current)</span>
+                    </a></li>
+                </ul>
+            </div>
+            <!--/.nav-collapse -->
+        </div>
+        <!--/.container-fluid -->
+    </nav>
+
+    <div class="row">
+
+        <div class="col-md-6">
+            <form th:action="@{/signup}" method="post">
+
+                Select your Role:
+                <div class="form-group">
+                    <label for="role">Register as : </label>
+                    <select class="form-control" id="role" class="chooseOption" name="role" style="width: 400px;" required>
+                        <option value="ROLE_RECRUITER">Employer</option>
+                        <option value="ROLE_USER">Job Seeker</option>
+                    </select>
+                </div>
+
+                <div class="input-group">
+                    <span class="glyphicon glyphicon-user" aria-hidden="true"></span>
+                    <input type="text" class="form-control" th:value="${candidate.name}" id="name" name="name" roleId="name"  placeholder="Enter your name(Required)" required="required" size="100"/>
+                </div>
+
+                <div class="input-group">
+                    <span class="glyphicon glyphicon-user" aria-hidden="true"></span>
+                    <input type="text" class="form-control" th:value="${candidate.univName}" id="univName" name="univName" roleId="univName"  placeholder="Enter your Organization(Required)" required="required" size="100"/>
+
+                </div>
+
+                <div class="input-group">
+                    <span class="glyphicon glyphicon-user" aria-hidden="true"></span>
+                    <input type="text" class="form-control" th:value="${candidate.email}" id="email" name="email" roleId="email"  placeholder="Enter your Email(Required)" required="required" size="100"/>
+                </div>
+
+
+                <div class="input-group ">
+                    <span class="glyphicon glyphicon-user" aria-hidden="true"></span>
+                    <input type="text" class="form-control" th:value="${candidate.username}" id="username" name="email" roleId="username"  placeholder="Enter your Username(Required)" required="required" size="100"/>
+                </div>
+
+                <div class="input-group">
+                    <span class="glyphicon glyphicon-barcode" aria-hidden="true"></span>
+
+                    <input type="text" class="form-control" th:value="${candidate.password}" id="password" name="email" roleId="password"  placeholder="Enter your Password(Required)" required="required" size="100"/>
+                </div>
+
+                <div class="row">
+                    <input type="submit" class="btn btn-info" value="Register">
+                </div>
+
+            </form>
+        </div>
+    </div>
+</div>
+<th:block th:replace="fragments :: javaScriptTemplate"></th:block>
+
+<th:block th:replace="fragments :: modals"></th:block>
+
+</body>
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="www.thymeleaf.org" >
+<head th:replace="main::headstuff">
+
+</head>
+<body>
+
+
+<div th:replace="main::navbar">
+
+</div>
+
+
+
+
+<div class = "container">
+
+        <div th:each = "candidateresume: ${resumeList}">
+             <p th:utext = "${candidateresume.first} +' ' +${candidateresume.middle}+' '+ ${candidateresume.last}">Record </p>
+            <p th:utext = "${candidateresume.email}"></p>
+                <h5>Education</h5>
+              <p th:utext = "${candidateresume.degree}+' in '+${candidateresume.field}+' &lt;br/&gt;'+${candidateresume.school}+', '+${candidateresume.yearGrad}">Record</p>
+            <h5>Experience</h5>
+           <p th:utext=" ${candidateresume.jobTitle} +' &lt;br/&gt; ' +${candidateresume.company}+', '+${candidateresume.workDur}+'&lt;br/&gt; '+ ${candidateresume.duty}">Record</p>
+            <h5>Skills</h5>
+            <p th:utext="${candidateresume.skill}+ ', '+ ${candidateresume.proficiency}">Record</p>
+        </div>
+
+
+
+
+
+
+</div>
+
+<!-- th:block goes away after processing, but what's inside stays, so it won't affect the page layout -->
+<th:block th:replace="fragments :: javaScriptTemplate"></th:block>
+
+<th:block th:replace="fragments :: modals"></th:block>
+</body>
+
+</html>
